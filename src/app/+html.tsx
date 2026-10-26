@@ -15,6 +15,7 @@ export default function Root({ children }: PropsWithChildren) {
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>Don't Fall for Traps</title>
         <meta name="description" content="To-dos und Routinen als Spiel: XP, Level, Streaks und Abzeichen. / To-dos and routines as a game." />
         <meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)" />
