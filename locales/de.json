@@ -1,0 +1,486 @@
+{
+  "app": {
+    "name": "Don't Fall for Traps",
+    "tapeA": "Don’t fall for",
+    "tapeB": "traps",
+    "loading": "Lädt"
+  },
+  "common": {
+    "save": "Speichern",
+    "create": "Anlegen",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "keep": "Behalten",
+    "close": "Schließen",
+    "edit": "Bearbeiten",
+    "continue": "Weiter",
+    "and": "und",
+    "less": "Weniger",
+    "more": "Mehr"
+  },
+  "tabs": {
+    "label": "Bereiche",
+    "home": "Start",
+    "todos": "To-Dos",
+    "routines": "Routinen",
+    "level": "Level"
+  },
+  "top": {
+    "stat_one": "Streak {{count}} Tag, Level {{level}}",
+    "stat_other": "Streak {{count}} Tage, Level {{level}}",
+    "settings": "Einstellungen"
+  },
+  "day": {
+    "today": "Heute",
+    "yesterday": "Gestern",
+    "tomorrow": "Morgen"
+  },
+  "diff": {
+    "1": "Leicht",
+    "2": "Mittel",
+    "3": "Schwer",
+    "label": "Schwierigkeit: {{level}}"
+  },
+  "greeting": {
+    "morning": "Moin!",
+    "morning_name": "Moin, {{name}}",
+    "morning_sub": "Ganz in Ruhe ankommen, dann loslegen.",
+    "midday": "Hey!",
+    "midday_name": "Hey {{name}}",
+    "midday_sub": "Schön, dass du da bist.",
+    "afternoon": "Hey!",
+    "afternoon_name": "Hey {{name}}",
+    "afternoon_sub": "Wie läuft dein Tag bisher?",
+    "evening": "Schönen Abend!",
+    "evening_name": "Schönen Abend, {{name}}",
+    "evening_sub": "Noch ein, zwei Haken, dann Feierabend.",
+    "night": "Noch wach?",
+    "night_name": "Noch wach, {{name}}?",
+    "night_sub": "Mach langsam. Morgen ist auch noch ein Tag."
+  },
+  "quote": {
+    "label": "Spruch des Tages",
+    "number": "Nr. {{n}}"
+  },
+  "start": {
+    "today": "Heute",
+    "allTodos": "Alle To-dos",
+    "waiting_one": "To-do wartet heute auf dich",
+    "waiting_other": "To-dos warten heute auf dich",
+    "more": "Dazu {{list}}.",
+    "moreWeek_one": "{{count}} diese Woche",
+    "moreWeek_other": "{{count}} diese Woche",
+    "moreMonth_one": "{{count}} diesen Monat",
+    "moreMonth_other": "{{count}} diesen Monat",
+    "moreYear_one": "{{count}} dieses Jahr",
+    "moreYear_other": "{{count}} dieses Jahr",
+    "andMore_one": "und {{count}} weiteres",
+    "andMore_other": "und {{count}} weitere",
+    "nothingLeft": "Heute wartet nichts mehr auf dich.",
+    "enjoy": "Genieß den Moment.",
+    "noTodos": "Noch keine To-dos",
+    "noTodosSub": "Jeder Haken bringt XP und hält deine Streak am Leben.",
+    "firstTodo": "Erstes To-do",
+    "goalReached": "Tagesziel geschafft. Stark.",
+    "goal_one": "Tagesziel: {{count}} Routine",
+    "goal_other": "Tagesziel: {{count}} Routinen",
+    "goalBonusDone": "+{{xp}} XP Bonus ist eingesammelt.",
+    "goalRemaining": "Noch {{count}} bis zum Bonus von +{{xp}} XP.",
+    "allRoutines": "Alle Routinen",
+    "ringRoutines": "Routinen",
+    "level": "Level",
+    "details": "Details",
+    "playerSub_one": "Noch {{left}} XP bis Level {{next}} · heute +{{today}} XP · Streak {{count}} Tag",
+    "playerSub_other": "Noch {{left}} XP bis Level {{next}} · heute +{{today}} XP · Streak {{count}} Tage"
+  },
+  "hints": {
+    "overdue_one": "<b>{{count}} Tages-To-do</b> von früheren Tagen ist noch offen.",
+    "overdue_other": "<b>{{count}} Tages-To-dos</b> von früheren Tagen sind noch offen.",
+    "overdueAction": "Auf heute holen",
+    "routineTight_one": "{{emoji}} <b>{{title}}</b>: noch {{remaining}}× in {{count}} Tag. Jetzt wird es knapp.",
+    "routineTight_other": "{{emoji}} <b>{{title}}</b>: noch {{remaining}}× in {{count}} Tagen. Jetzt wird es knapp.",
+    "routineOpen": {
+      "woche": "{{emoji}} <b>{{title}}</b>: noch {{remaining}}× diese Woche.",
+      "monat": "{{emoji}} <b>{{title}}</b>: noch {{remaining}}× diesen Monat.",
+      "jahr": "{{emoji}} <b>{{title}}</b>: noch {{remaining}}× dieses Jahr."
+    },
+    "listEnding_one": "Nur noch {{count}} Tag: <b>{{what}}</b> offen.",
+    "listEnding_other": "Nur noch {{count}} Tage: <b>{{what}}</b> offen.",
+    "what": {
+      "woche_one": "{{count}} Wochen-To-do",
+      "woche_other": "{{count}} Wochen-To-dos",
+      "monat_one": "{{count}} Monats-To-do",
+      "monat_other": "{{count}} Monats-To-dos",
+      "jahr_one": "{{count}} Jahres-To-do",
+      "jahr_other": "{{count}} Jahres-To-dos"
+    }
+  },
+  "todos": {
+    "title": "To-Dos",
+    "pickList": "Liste wählen",
+    "tab": {
+      "aktuell": "Aktuell",
+      "woche": "Woche",
+      "monat": "Monat",
+      "jahr": "Jahr"
+    },
+    "listName": {
+      "aktuell": "Aktuell",
+      "woche": "Wochen-To-dos",
+      "monat": "Monats-To-dos",
+      "jahr": "Jahres-To-dos"
+    },
+    "nowIntro": "Alles, was gerade ansteht: To-dos ohne Datum und deine To-dos für heute.",
+    "prevPeriod": "Vorheriger Zeitraum",
+    "nextPeriod": "Nächster Zeitraum",
+    "current_one": "aktuell · noch {{count}} Tag",
+    "current_other": "aktuell · noch {{count}} Tage",
+    "backToNow": "Zurück zu jetzt",
+    "week": "KW {{week}}",
+    "weekRange": "KW {{week}} · {{from}}–{{to}}",
+    "emptyNow": "Hier landet alles, was ansteht: ohne Datum oder nur für heute. Kein Stress, einfach abhaken.",
+    "emptyPeriod": "Noch nichts geplant für diesen Zeitraum. Teile große Ziele in Unterpunkte, dann siehst du den Fortschritt wachsen.",
+    "newTodo": "To-do anlegen",
+    "progressAll": "Alles geschafft",
+    "progressIn": "geschafft in {{list}}",
+    "progressSummary": "{{done}} von {{total}} To-dos erledigt",
+    "subsSummary": "{{done}}/{{total}} Unterpunkte",
+    "allDoneList": "Alles erledigt in dieser Liste. Gönn dir den Moment.",
+    "planned": "Geplant ({{count}})",
+    "done": "Erledigt ({{count}})",
+    "doneOn": "erledigt {{when}}",
+    "overdue": "überfällig",
+    "noDate": "Ohne Datum",
+    "addSub": "Unterpunkt hinzufügen",
+    "addSubTo": "Unterpunkt zu {{title}} hinzufügen",
+    "options": "Optionen für {{title}}",
+    "check": "{{title}} erledigt",
+    "fab": "To-do",
+    "fabLabel": "Neues To-do"
+  },
+  "todoForm": {
+    "newTitle": "Neues To-do",
+    "editTitle": "To-do bearbeiten",
+    "what": "Was steht an?",
+    "placeholder": "z. B. Steuererklärung abschicken",
+    "list": "Liste",
+    "due": "Fällig",
+    "period": "Zeitraum",
+    "earlier": "Früher",
+    "later": "Später",
+    "difficulty": "Schwierigkeit",
+    "subs": "Unterpunkte",
+    "subsHint": "je +{{xp}} XP, ergeben den Fortschrittsbalken",
+    "removeSub": "Unterpunkt entfernen",
+    "newSub": "Neuer Unterpunkt",
+    "errTitle": "Gib dem To-do einen Namen."
+  },
+  "menu": {
+    "moveTo": {
+      "tag": "Auf heute verschieben",
+      "woche": "In diese Woche verschieben",
+      "monat": "In diesen Monat verschieben",
+      "jahr": "In dieses Jahr verschieben"
+    }
+  },
+  "confirm": {
+    "title": "„{{title}}“ löschen?",
+    "todoKeepsXp": "Die XP, die du dafür bekommen hast, bleiben dir erhalten.",
+    "irreversible": "Das lässt sich nicht rückgängig machen.",
+    "routine": "Dein Verlauf und deine XP bleiben erhalten, die Routine verschwindet aus der Liste.",
+    "label": "Löschen bestätigen"
+  },
+  "toast": {
+    "saved": "Gespeichert",
+    "todoCreated": "To-do angelegt",
+    "plannedFor": "Geplant für {{when}}",
+    "moved": "Verschoben",
+    "movedToday_one": "{{count}} To-do auf heute geholt",
+    "movedToday_other": "{{count}} To-dos auf heute geholt",
+    "todoDeleted": "To-do gelöscht",
+    "routineCreated": "Routine angelegt",
+    "routineDeleted": "Routine gelöscht",
+    "badge": "Abzeichen freigeschaltet: {{name}}",
+    "xp": "+{{xp}} XP",
+    "exported": "Daten exportiert",
+    "imported": "Daten importiert",
+    "importError": "Die Datei passt nicht. Erwartet wird ein Export von Don't Fall for Traps.",
+    "saveError": "Speichern hat nicht geklappt. Versuch es bitte noch einmal."
+  },
+  "routines": {
+    "title": "Routinen",
+    "pickScope": "Rhythmus wählen",
+    "scope": {
+      "tag": "Tag",
+      "woche": "Woche",
+      "monat": "Monat",
+      "jahr": "Jahr"
+    },
+    "per": {
+      "tag": "am Tag",
+      "woche": "pro Woche",
+      "monat": "im Monat",
+      "jahr": "im Jahr"
+    },
+    "goalTitle": "Tagesziel",
+    "goalText": "So viele Routinen willst du pro Tag schaffen. Erreicht gibt es +{{xp}} XP.",
+    "goalDec": "Tagesziel verringern",
+    "goalInc": "Tagesziel erhöhen",
+    "ringToday": "heute",
+    "nowName": {
+      "tag": "Heute",
+      "woche": "Diese Woche",
+      "monat": "Dieser Monat",
+      "jahr": "Dieses Jahr"
+    },
+    "prevName": {
+      "tag": "Gestern",
+      "woche": "Letzte Woche",
+      "monat": "Letzter Monat",
+      "jahr": "Letztes Jahr"
+    },
+    "summary": "{{name}}: {{met}} von {{total}} erfüllt",
+    "lookback": "Rückblick: {{name}} {{met}} von {{total}} erfüllt",
+    "daysLeft_one": "noch {{count}} Tag",
+    "daysLeft_other": "noch {{count}} Tage",
+    "empty": {
+      "tag": "Noch keine Tagesroutinen",
+      "woche": "Noch keine Wochenroutinen",
+      "monat": "Noch keine Monatsroutinen",
+      "jahr": "Noch keine Jahresroutinen"
+    },
+    "emptyText": "Lege fest, wie oft du etwas schaffen willst. Zum Beispiel dreimal pro Woche laufen oder einmal im Monat die Fußnägel schneiden. Tippe auf einen Vorschlag oder leg eine eigene Routine an.",
+    "suggestion": "{{emoji}} {{title}} · {{target}}× {{per}}",
+    "met": "Erfüllt",
+    "metTimes": "Erfüllt, {{count}}×",
+    "status": "{{target}}× {{per}} · noch {{remaining}}×",
+    "statusDays_one": "{{target}}× {{per}} · noch {{remaining}}× in {{count}} Tag",
+    "statusDays_other": "{{target}}× {{per}} · noch {{remaining}}× in {{count}} Tagen",
+    "undo": "Letzten Eintrag zurücknehmen",
+    "inc": "{{title}} geschafft, plus {{xp}} XP",
+    "progress": "{{count}} von {{target}}",
+    "lookbackTitle": "Rückblick",
+    "hits": {
+      "tag": "{{hits}} von 6 Tagen erfüllt",
+      "woche": "{{hits}} von 6 Wochen erfüllt",
+      "monat": "{{hits}} von 6 Monaten erfüllt",
+      "jahr": "{{hits}} von 6 Jahren erfüllt"
+    },
+    "inRow": "{{count}} in Folge",
+    "xpInfo": "+{{xp}} XP je Mal, +{{bonus}} XP wenn das Ziel steht",
+    "fab": "Routine",
+    "fabLabel": "Neue Routine",
+    "suggest": {
+      "run": "Laufen gehen",
+      "toenails": "Fußnägel schneiden",
+      "water": "Wasser trinken (Glas)",
+      "read": "Lesen",
+      "tidy": "Wohnung aufräumen",
+      "dentist": "Zahnarzt-Kontrolle"
+    }
+  },
+  "routineForm": {
+    "newTitle": "Neue Routine",
+    "editTitle": "Routine bearbeiten",
+    "what": "Was willst du regelmäßig tun?",
+    "placeholder": "z. B. Laufen gehen",
+    "symbol": "Symbol",
+    "rhythm": "Rhythmus",
+    "target": "Ziel",
+    "targetValue": "{{count}}× {{per}}",
+    "xpInfo": "+{{xp}} XP je Mal, +{{bonus}} XP Bonus, wenn das Ziel {{when}} steht.",
+    "when": {
+      "tag": "am Tag",
+      "woche": "in der Woche",
+      "monat": "im Monat",
+      "jahr": "im Jahr"
+    },
+    "errTitle": "Gib der Routine einen Namen."
+  },
+  "level": {
+    "total": "Level {{level}} · {{xp}} XP gesamt",
+    "progress": "{{into}} / {{need}} XP · noch {{left}} bis Level {{next}} ({{title}})",
+    "progressLabel": "Fortschritt bis Level {{level}}",
+    "streakTile_one": "Tag Streak · Rekord {{best}}",
+    "streakTile_other": "Tage Streak · Rekord {{best}}",
+    "perfectTile": "perfekte Tage (Tagesziel)",
+    "todosTile_one": "To-dos erledigt · {{count}} Unterpunkt",
+    "todosTile_other": "To-dos erledigt · {{count}} Unterpunkte",
+    "routinesTile": "Routinen geschafft",
+    "heatTitle": "Deine letzten 18 Wochen",
+    "heatLabel": "XP pro Tag der letzten 18 Wochen",
+    "heatLegend": "wenig · viel XP",
+    "heatToday": "heute",
+    "badges": "Abzeichen",
+    "rulesTitle": "So gibt es XP",
+    "rules": {
+      "todoA": "To-do heute · ohne Datum · Woche",
+      "todoB": "To-do Monat · Jahr",
+      "diff": "Schwierigkeit mittel · schwer",
+      "diffValue": "×1,5 · ×2",
+      "sub": "Unterpunkt",
+      "routine": "Routine Tag · Woche · Monat · Jahr",
+      "routineGoal": "Routinen-Ziel im Zeitraum erreicht",
+      "routineGoalValue": "+5 bis +100",
+      "dailyGoal": "Tagesziel erreicht"
+    },
+    "upEyebrow": "Level-Up",
+    "upTitle": "Level {{level}}",
+    "upText": "Neuer Titel: <b>{{title}}</b>. Keine Falle hat dich erwischt."
+  },
+  "titles": {
+    "rookie": "Neuling",
+    "tracker": "Spurenleser",
+    "trapSpotter": "Fallensucher",
+    "sureFooted": "Stolperfrei",
+    "pathfinder": "Pfadfinder",
+    "trapWhisperer": "Fallenflüsterer",
+    "trailblazer": "Wegbereiter",
+    "trapBreaker": "Fallenbrecher",
+    "uncatchable": "Unfangbar",
+    "legend": "Legende der Pfade"
+  },
+  "badges": {
+    "first": {
+      "name": "Erster Schritt",
+      "desc": "Erstes To-do erledigt"
+    },
+    "subs25": {
+      "name": "Kleinkram-Profi",
+      "desc": "25 Unterpunkte abgehakt"
+    },
+    "todo50": {
+      "name": "Abhak-Maschine",
+      "desc": "50 To-dos erledigt"
+    },
+    "st3": {
+      "name": "Funke",
+      "desc": "3 Tage am Stück aktiv"
+    },
+    "st7": {
+      "name": "Lagerfeuer",
+      "desc": "7 Tage am Stück aktiv"
+    },
+    "st30": {
+      "name": "Flächenbrand",
+      "desc": "30 Tage am Stück aktiv"
+    },
+    "perfect": {
+      "name": "Perfekter Tag",
+      "desc": "Tagesziel bei Routinen erreicht"
+    },
+    "perfect7": {
+      "name": "Sieben Volltreffer",
+      "desc": "7 perfekte Tage gesammelt"
+    },
+    "week": {
+      "name": "Wochensieger",
+      "desc": "Eine Wochenroutine voll erfüllt"
+    },
+    "month": {
+      "name": "Monatsheld",
+      "desc": "Eine Monatsroutine erfüllt"
+    },
+    "year": {
+      "name": "Weitblick",
+      "desc": "Ein Jahres-To-do erledigt"
+    },
+    "lv5": {
+      "name": "Pfadfinder",
+      "desc": "Level 5 erreicht"
+    },
+    "lv10": {
+      "name": "Unaufhaltsam",
+      "desc": "Level 10 erreicht"
+    },
+    "xp1000": {
+      "name": "Tausender",
+      "desc": "1.000 XP gesammelt"
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "name": "Wie dürfen wir dich nennen?",
+    "namePlaceholder": "Dein Vorname",
+    "language": "Sprache",
+    "langSystem": "System",
+    "langDe": "Deutsch",
+    "langEn": "English",
+    "theme": "Darstellung",
+    "themeSystem": "System",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "goal": "Tagesziel Routinen",
+    "goalValue_one": "{{count}} pro Tag",
+    "goalValue_other": "{{count}} pro Tag",
+    "notifications": "Benachrichtigung",
+    "mail": "Motivations-Mail am Morgen",
+    "mailText": "Jeden Morgen an deine E-Mail-Adresse: was du gestern geschafft hast, was offen ist, ein Spruch für den Tag.",
+    "mailTime": "Uhrzeit",
+    "mailSoon": "Die Mail startet, sobald es Konten gibt. Deine Auswahl wird schon gespeichert.",
+    "push": "Benachrichtigungen auf dem Handy",
+    "pushText": "Morgens die Kurzbilanz, abends eine Erinnerung, falls das Tagesziel noch offen ist.",
+    "pushSoon": "Kommt mit der App für Android und iOS.",
+    "data": "Deine Daten",
+    "localNote": "Deine Daten liegen nur auf diesem Gerät. Konto und Abgleich zwischen Geräten kommen bald.",
+    "export": "Daten exportieren",
+    "import": "Daten importieren",
+    "importTitle": "Daten importieren?",
+    "importText": "Der Import ersetzt alle To-dos, Routinen und Einträge auf diesem Gerät.",
+    "importText2": "In der Datei: {{todos}} To-dos, {{routines}} Routinen, {{days}} Tage.",
+    "importConfirm": "Importieren",
+    "pastePlaceholder": "Oder den Inhalt der JSON-Datei hier einfügen",
+    "pickFile": "Datei wählen",
+    "check": "Prüfen"
+  },
+  "quotes": [
+    "Die größte Falle ist der Satz: Morgen fange ich an.",
+    "Ein erledigter Punkt wiegt mehr als zehn perfekte Pläne.",
+    "Du musst heute nicht alles schaffen. Nur ein bisschen mehr als gestern.",
+    "Aufstehen ist der erste Haken des Tages.",
+    "Motivation kommt und geht. Routinen bleiben.",
+    "Kleine Schritte zählen. Vor allem die, die du wirklich gehst.",
+    "Wer die Falle kennt, tritt nicht hinein.",
+    "Fang mit dem Kleinsten an. Der Rest folgt dem Schwung.",
+    "Heute ist ein neues Level. Spiel es.",
+    "Nicht perfekt, aber erledigt.",
+    "Dein zukünftiges Ich schaut dir gerade zu.",
+    "Disziplin heißt, sich zu erinnern, was man wirklich will.",
+    "Das Handy kann warten. Dein Ziel nicht.",
+    "Fünf Minuten anfangen ist besser als fünf Stunden aufschieben.",
+    "Jeder Haken ist ein Beweis, dass du es kannst.",
+    "Ausreden sind Fallen mit schöner Verpackung.",
+    "Gestern ist vorbei. Heute zählt.",
+    "Eine Streak schlägt jedes Talent.",
+    "Mach es heute so, dass du es morgen wieder schaffst.",
+    "Du bist nicht hinterher. Du bist genau da, wo du anfängst.",
+    "Der schwerste Schritt ist der aus dem Bett.",
+    "Erledige das Unangenehme zuerst. Dann gehört der Tag dir.",
+    "Ziele zeigen die Richtung. Routinen sind die Straße.",
+    "Wer jeden Tag ein bisschen macht, hat am Ende viel geschafft.",
+    "Lieber langsam vorwärts als schnell im Kreis.",
+    "Ein voller Tag beginnt mit einem einzigen Haken.",
+    "Warte nicht auf Lust. Die Lust kommt beim Machen.",
+    "Du hast schon härtere Tage geschafft als diesen.",
+    "Plane wenig. Erledige alles davon.",
+    "Heute ein bisschen besser als gestern. Mehr braucht es nicht.",
+    "Jede erledigte Routine ist ein Baustein für dein neues Ich.",
+    "Die Falle heißt \"nur noch kurz\". Spring drüber.",
+    "Kein Druck. Nur ein Haken nach dem anderen.",
+    "Fortschritt ist leise. Mach trotzdem weiter.",
+    "Was du heute schaffst, musst du morgen nicht mehr tragen.",
+    "Fehler sind Hinweise, keine Urteile.",
+    "Dauert es keine zwei Minuten? Dann jetzt.",
+    "Den Tag gewinnst du am Morgen.",
+    "Der Plan steht. Jetzt fehlt nur noch der Anfang.",
+    "Bleib dran, auch an den Tagen, an denen es keiner sieht.",
+    "Einmal verpasst ist ein Ausrutscher. Komm heute zurück.",
+    "XP gibt es für Taten, nicht für Vorsätze.",
+    "Steh auf, bevor die Ausreden wach werden.",
+    "Heute ist ein guter Tag, um nicht in die Falle zu tappen.",
+    "Mut heißt anfangen, ohne zu wissen, wie es ausgeht.",
+    "Schau auf den nächsten Schritt, nicht auf alle.",
+    "Du musst nicht motiviert sein. Du musst nur anfangen.",
+    "Wer heute sät, hakt morgen ab."
+  ]
+}
