@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Don't Fall for Traps",
+    "slug": "dont-fall-for-traps",
+    "scheme": "dfft",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "de.seran.dontfallfortraps"
+    },
+    "android": {
+      "package": "de.seran.dontfallfortraps",
+      "adaptiveIcon": {
+        "backgroundColor": "#121013",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/favicon.png",
+      "name": "Don't Fall for Traps",
+      "shortName": "DFFT",
+      "themeColor": "#F7F5F1",
+      "backgroundColor": "#F7F5F1"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      "expo-localization",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#121013"
+        }
+      ],
+      "expo-sqlite",
+      "expo-sharing"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "baseUrl": "/dont-fall-for-traps"
+    }
+  }
+}
