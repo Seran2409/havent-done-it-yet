@@ -1,5 +1,5 @@
 /*
- * Serves the static web export (dist/) under /dont-fall-for-traps/ like GitHub Pages does:
+ * Serves the static web export (dist/) under /havent-done-it-yet/ like GitHub Pages does:
  * /todos -> todos.html, unknown paths -> 404.html. Used for local checks and the E2E tests.
  * Run: node scripts/serve-dist.mjs [port]
  */
@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const port = Number(process.argv[2] || 8090);
-const BASE = '/dont-fall-for-traps';
+const BASE = '/havent-done-it-yet';
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript',

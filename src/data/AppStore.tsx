@@ -37,6 +37,8 @@ interface Store {
     setGoal(goal: number): void;
     exportData(): ReturnType<typeof toExport>;
     importData(raw: unknown): Promise<void>;
+    /** Deletes everything on this device and starts fresh (welcome screen included). */
+    resetAll(): Promise<void>;
   };
 }
 
@@ -244,6 +246,12 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
       },
       async importData(raw) {
         const next = normalizeImport(raw);
+        await localStore.replaceAll(next);
+        dataRef.current = next;
+        setData(next);
+      },
+      async resetAll() {
+        const next = emptyAppData();
         await localStore.replaceAll(next);
         dataRef.current = next;
         setData(next);

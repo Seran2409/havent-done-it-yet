@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { useStore } from '../../data/AppStore';
 import { SUB_XP } from '../../game/rules';
 import { isLate, todoProgress, todoXp } from '../../game/todos';
@@ -8,6 +8,7 @@ import type { Todo } from '../../game/types';
 import { dayLabel } from '../../i18n/format';
 import { useTheme } from '../../theme/ThemeProvider';
 import { radius } from '../../theme/tokens';
+import { Icon } from '../../ui/Icon';
 import { useSheet } from '../../ui/overlays';
 import { Checkbox, IconButton, Pips, ProgressBar, XpTag } from '../../ui/primitives';
 import { T } from '../../ui/Text';
@@ -19,6 +20,8 @@ export function TodoCard({ todo }: { todo: Todo }) {
   const { today, actions } = useStore();
   const sheet = useSheet();
   const [newSub, setNewSub] = useState('');
+  // The subtask field stays hidden until asked for, so cards stay calm.
+  const [adding, setAdding] = useState(false);
   const subs = todo.subs;
   const sd = subs.filter((s) => s.done).length;
   const late = isLate(todo, today);
@@ -76,21 +79,38 @@ export function TodoCard({ todo }: { todo: Todo }) {
               <XpTag xp={SUB_XP} />
             </View>
           ))}
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 }}>
-            <Input
-              small
-              value={newSub}
-              onChangeText={setNewSub}
-              placeholder={t('todos.addSub')}
-              maxLength={120}
+          {adding ? (
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 }}>
+              <Input
+                small
+                autoFocus
+                value={newSub}
+                onChangeText={setNewSub}
+                onBlur={() => !newSub.trim() && setAdding(false)}
+                placeholder={t('todos.addSub')}
+                maxLength={120}
+                accessibilityLabel={t('todos.addSubTo', { title: todo.title })}
+                returnKeyType="done"
+                blurOnSubmit={false}
+                onSubmitEditing={submitSub}
+                style={{ flex: 1, height: 38, borderRadius: 10, paddingHorizontal: 10, fontSize: 15 }}
+              />
+              <IconButton icon="plus" label={t('todos.addSub')} onPress={submitSub} />
+            </View>
+          ) : (
+            <Pressable
+              onPress={() => setAdding(true)}
+              accessibilityRole="button"
               accessibilityLabel={t('todos.addSubTo', { title: todo.title })}
-              returnKeyType="done"
-              blurOnSubmit={false}
-              onSubmitEditing={submitSub}
-              style={{ flex: 1, height: 36, borderStyle: 'dashed', borderWidth: 1, borderColor: c.lineStrong, backgroundColor: 'transparent', borderRadius: 10, paddingHorizontal: 10, fontSize: 15 }}
-            />
-            <IconButton icon="plus" label={t('todos.addSub')} onPress={submitSub} />
-          </View>
+              hitSlop={6}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', paddingVertical: 6 }}
+            >
+              <Icon name="plus" size={16} color={c.muted} />
+              <T v="smallBold" muted>
+                {t('todos.addSub')}
+              </T>
+            </Pressable>
+          )}
         </View>
       ) : null}
     </View>

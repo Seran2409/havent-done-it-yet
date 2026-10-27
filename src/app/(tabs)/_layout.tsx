@@ -1,6 +1,8 @@
 import { Slot } from 'expo-router';
 import { View } from 'react-native';
+import { ReminderSync } from '../../features/shell/ReminderSync';
 import { TabBar, TopBar } from '../../features/shell/Shell';
+import { WelcomeGate } from '../../features/shell/Welcome';
 import { lastTouch } from '../../ui/overlays';
 
 export default function TabsLayout() {
@@ -15,6 +17,8 @@ export default function TabsLayout() {
       <Slot />
       <TopBar />
       <TabBar />
+      <WelcomeGate />
+      <ReminderSync />
     </View>
   );
 }

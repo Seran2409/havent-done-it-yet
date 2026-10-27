@@ -58,8 +58,11 @@ export interface Settings {
   timezone: string;
   dailyGoal: number;
   mail: { enabled: boolean; time?: string };
-  push?: { enabled: boolean };
+  /** Local reminders on the phone. Times are "HH:MM" in device time. */
+  push?: { enabled: boolean; time?: string; evening?: boolean; eveningTime?: string };
   theme?: ThemePref;
+  /** Welcome screen was shown. */
+  onboarded?: boolean;
 }
 
 /** Export/import format and the in-memory state shape. */

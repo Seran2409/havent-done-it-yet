@@ -48,3 +48,6 @@ yarn-error.*
 # test output
 /test-results
 /playwright-report
+
+# personal data exports (never commit)
+/private

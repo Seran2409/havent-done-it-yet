@@ -14,8 +14,14 @@ const HAZARD = '#F5C21B';
 const INK = '#1C1A0F';
 const BLACK = '#121013';
 
-/** The tape: frayed yellow band, striped ends, "DON'T FALL FOR" + inverted "TRAPS". Centered at 0,0. */
-function tape({ width, height, fs, mono = false }) {
+/** Rough Anton advance widths (em) so textLength only nudges the spacing. */
+function textWidth(text, fs) {
+  const em = { " ": 0.36, "!": 0.3, Y: 0.56, T: 0.5, I: 0.27, "'": 0.18, "’": 0.18, M: 0.62, W: 0.66 };
+  return [...text].reduce((a, ch) => a + (em[ch] ?? 0.5), 0) * fs;
+}
+
+/** The tape: frayed yellow band, striped ends, textA in ink + textB inverted (ink box). Centered at 0,0. */
+function tape({ width, height, fs, mono = false, textA = "HAVEN'T DONE IT", textB = "YET!" }) {
   const w = width;
   const h = height;
   const x0 = -w / 2;
@@ -27,13 +33,12 @@ function tape({ width, height, fs, mono = false }) {
   const fill = mono ? '#FFFFFF' : HAZARD;
   const ink = mono ? 'none' : INK;
   const band = fs * 0.12;
-  const textA = "DON'T FALL FOR";
-  const textB = 'TRAPS';
-  // Widths are pinned with textLength so the inverted TRAPS box always fits its text.
-  const wA = textA.length * fs * 0.47;
-  const wBText = textB.length * fs * 0.52;
+  // Widths are pinned with textLength so the inverted box always fits its text.
+  const wA = textA ? textWidth(textA, fs) : 0;
+  const gap = textA ? fs * 0.25 : 0;
+  const wBText = textWidth(textB, fs);
   const wB = wBText + fs * 0.4;
-  const total = wA + fs * 0.25 + wB;
+  const total = wA + gap + wB;
   const tx = -total / 2;
   const base = fs * 0.36;
   return `
@@ -52,9 +57,9 @@ function tape({ width, height, fs, mono = false }) {
       <rect x="${x0}" y="${y0 + h - band * 0.6}" width="${w}" height="${band * 0.6}" fill="${ink}"/>`}
     </g>
     ${mono ? '' : `
-    <text x="${tx}" y="${base}" font-family="Anton" font-size="${fs}" textLength="${wA}" lengthAdjust="spacing" fill="${INK}">${textA.replace("'", '’')}</text>
-    <rect x="${tx + wA + fs * 0.25}" y="${-fs * 0.56}" width="${wB}" height="${fs * 1.08}" rx="${fs * 0.06}" fill="${INK}"/>
-    <text x="${tx + wA + fs * 0.25 + fs * 0.2}" y="${base}" font-family="Anton" font-size="${fs}" textLength="${wBText}" lengthAdjust="spacing" fill="${HAZARD}">${textB}</text>`}`;
+    ${textA ? `<text x="${tx}" y="${base}" font-family="Anton" font-size="${fs}" textLength="${wA}" lengthAdjust="spacing" fill="${INK}">${textA.replace("'", '’')}</text>` : ''}
+    <rect x="${tx + wA + gap}" y="${-fs * 0.56}" width="${wB}" height="${fs * 1.08}" rx="${fs * 0.06}" fill="${INK}"/>
+    <text x="${tx + wA + gap + fs * 0.2}" y="${base}" font-family="Anton" font-size="${fs}" textLength="${wBText}" lengthAdjust="spacing" fill="${HAZARD}">${textB}</text>`}`;
 }
 
 function svg(size, body, bg) {
@@ -67,7 +72,7 @@ function svg(size, body, bg) {
 /** Tape crossing the square, slightly tilted, soft shadow. `scale` shrinks it for safe zones. */
 function appIcon(size, { scale = 1, bg = BLACK, mono = false } = {}) {
   const s = size * scale;
-  const t = tape({ width: s * 1.5, height: s * 0.2, fs: s * 0.092, mono });
+  const t = tape({ width: s * 1.32, height: s * 0.27, fs: s * 0.17, mono, textA: '', textB: 'YET!' });
   const shadow = mono ? '' : `<filter id="sh" x="-20%" y="-50%" width="140%" height="200%"><feDropShadow dx="0" dy="${s * 0.012}" stdDeviation="${s * 0.014}" flood-color="#000" flood-opacity="0.45"/></filter>`;
   return svg(
     size,
@@ -105,3 +110,7 @@ render('public/icons/icon-192.png', appIcon(1024), 192);
 render('public/icons/icon-512.png', appIcon(1024), 512);
 render('public/icons/maskable-512.png', appIcon(1024, { scale: 0.8 }), 512);
 render('public/icons/apple-touch-icon.png', appIcon(1024), 180);
+
+/** Android status-bar icon: white check mark on transparent. */
+const check = svg(96, '<path d="M20 50l18 18 38-40" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>');
+render('assets/notification-icon.png', check, 96);

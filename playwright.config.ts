@@ -6,7 +6,7 @@ export default defineConfig({
   timeout: 60_000,
   fullyParallel: false,
   use: {
-    baseURL: 'http://localhost:8091/dont-fall-for-traps/',
+    baseURL: 'http://localhost:8091/havent-done-it-yet/',
     locale: 'de-DE',
     timezoneId: 'Europe/Berlin',
     trace: 'retain-on-failure',
@@ -14,7 +14,7 @@ export default defineConfig({
   projects: [{ name: 'phone', use: { ...devices['Pixel 7'], browserName: 'chromium' } }],
   webServer: {
     command: 'node scripts/serve-dist.mjs 8091',
-    url: 'http://localhost:8091/dont-fall-for-traps/',
+    url: 'http://localhost:8091/havent-done-it-yet/',
     reuseExistingServer: !process.env.CI,
   },
 });

@@ -58,7 +58,7 @@ describe('level', () => {
   it('picks titles by level', () => {
     expect(levelTitleKey(1)).toBe('rookie');
     expect(levelTitleKey(6)).toBe('pathfinder');
-    expect(levelTitleKey(7)).toBe('trapWhisperer');
+    expect(levelTitleKey(7)).toBe('summitSeeker');
     expect(levelTitleKey(25)).toBe('legend');
   });
 });

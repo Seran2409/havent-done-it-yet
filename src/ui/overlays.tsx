@@ -20,6 +20,7 @@ import { useTheme } from '../theme/ThemeProvider';
 import { MAX_WIDTH, fonts } from '../theme/tokens';
 import { HexBadge } from './graphics';
 import { Button, IconButton } from './primitives';
+import { maybeAskForReview } from './review';
 import { Rich, T, safe } from './Text';
 
 /* ============ sheet ============ */
@@ -269,7 +270,14 @@ export function FxLayer() {
               {t('level.upTitle', { level: L.level })}
             </T>
             <Rich text={t('level.upText', { title: safe(t(`titles.${levelTitleKey(L.level)}`)) })} muted style={{ textAlign: 'center' }} />
-            <Button label={t('common.continue')} onPress={close} style={{ minWidth: 180 }} />
+            <Button
+              label={t('common.continue')}
+              onPress={() => {
+                close();
+                maybeAskForReview(L.level);
+              }}
+              style={{ minWidth: 180 }}
+            />
           </View>
         ),
         t('level.upEyebrow'),

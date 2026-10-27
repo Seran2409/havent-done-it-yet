@@ -27,7 +27,7 @@ jobs:
       - run: npm ci
       - name: Sprachdateien, Typen, Unit-Tests
         run: npm run verify
-      - name: Statischer Web-Export (baseUrl /dont-fall-for-traps)
+      - name: Statischer Web-Export (baseUrl /havent-done-it-yet)
         run: npm run export:web
       - name: .nojekyll (Expo nutzt Ordner mit Unterstrich)
         run: |

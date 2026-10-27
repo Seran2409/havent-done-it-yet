@@ -11,10 +11,14 @@ export function defaultSettings(): Settings {
     timezone: deviceTimeZone(),
     dailyGoal: DEFAULT_GOAL,
     mail: { enabled: true, time: '07:30' },
-    push: { enabled: false },
+    push: { enabled: false, time: '07:30', evening: false, eveningTime: '20:00' },
     theme: 'system',
+    onboarded: false,
   };
 }
+
+const HHMM = /^([01]\d|2[0-3]):[0-5]\d$/;
+const hhmm = (v: unknown, fallback: string) => (typeof v === 'string' && HHMM.test(v) ? v : fallback);
 
 export const emptyAppData = (): AppData => ({ settings: defaultSettings(), todos: {}, routines: {}, days: {} });
 
@@ -39,9 +43,11 @@ function normSettings(raw: unknown): Settings {
     language: raw.language === 'de' || raw.language === 'en' ? raw.language : 'system',
     timezone: str(raw.timezone, d.timezone) || d.timezone,
     dailyGoal: Number.isFinite(goal) && goal >= 1 ? Math.min(30, Math.round(goal)) : DEFAULT_GOAL,
-    mail: { enabled: mail.enabled !== false, time: /^\d{2}:\d{2}$/.test(str(mail.time)) ? str(mail.time) : '07:30' },
-    push: { enabled: push.enabled === true },
+    mail: { enabled: mail.enabled !== false, time: hhmm(mail.time, '07:30') },
+    push: { enabled: push.enabled === true, time: hhmm(push.time, '07:30'), evening: push.evening === true, eveningTime: hhmm(push.eveningTime, '20:00') },
     theme: raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : 'system',
+    // Imported data means the person already knows the app.
+    onboarded: true,
   };
 }
 
@@ -151,7 +157,7 @@ export function toExport(data: AppData) {
   const strip = <T extends { id: string }>(rec: Record<string, T>) =>
     Object.fromEntries(Object.entries(rec).map(([id, { id: _id, ...rest }]) => [id, rest]));
   return {
-    app: 'dont-fall-for-traps',
+    app: 'havent-done-it-yet',
     version: EXPORT_VERSION,
     exportedAt: new Date().toISOString(),
     settings: data.settings,

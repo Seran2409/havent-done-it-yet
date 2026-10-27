@@ -2,6 +2,12 @@ import { expect, test } from '@playwright/test';
 
 test('to-do with subtasks, routine, tabs, language switch and reload', async ({ page }) => {
   await page.goto('./');
+
+  // First start: welcome screen with name.
+  await expect(page.getByText('Schön, dass du da bist.')).toBeVisible();
+  await page.getByRole('textbox', { name: 'Wie dürfen wir dich nennen?' }).fill('Seran');
+  await page.getByRole('button', { name: "Los geht's" }).click();
+  await expect(page.getByText(/Seran/).first()).toBeVisible();
   await expect(page.getByText('Noch keine To-dos')).toBeVisible();
 
   // New to-do for today with two subtasks.
@@ -46,4 +52,6 @@ test('to-do with subtasks, routine, tabs, language switch and reload', async ({ 
   await expect(page.getByText('Level 1 · 30 XP total')).toBeVisible();
   await page.getByRole('tab', { name: 'Home' }).click();
   await expect(page.getByText('Nothing left waiting for you today.')).toBeVisible();
+  // The welcome screen comes only once.
+  await expect(page.getByText('Good to have you here.')).toHaveCount(0);
 });

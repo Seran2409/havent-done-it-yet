@@ -2,7 +2,7 @@
 import * as DocumentPicker from 'expo-document-picker';
 
 export function exportFileName(today: string) {
-  return `dont-fall-for-traps-${today}.json`;
+  return `havent-done-it-yet-${today}.json`;
 }
 
 export async function saveJson(name: string, json: string): Promise<void> {

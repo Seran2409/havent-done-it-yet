@@ -10,3 +10,4 @@ export * from './hints';
 export * from './quotes';
 export * from './greeting';
 export * from './mutations';
+export * from './reminders';

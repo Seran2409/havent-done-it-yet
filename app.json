@@ -1,54 +1,102 @@
 {
   "expo": {
-    "name": "Don't Fall for Traps",
-    "slug": "dont-fall-for-traps",
-    "scheme": "dfft",
-    "version": "0.1.0",
+    "name": "Haven't Done It Yet!",
+    "slug": "havent-done-it-yet",
+    "scheme": "hdiy",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
+    "description": "To-dos und Routinen als Spiel: XP, Level, Streaks und Abzeichen.",
+    "githubUrl": "https://github.com/Seran2409/havent-done-it-yet",
+    "locales": {
+      "de": "./locales/native/de.json",
+      "en": "./locales/native/en.json"
+    },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "de.seran.dontfallfortraps"
+      "supportsTablet": false,
+      "bundleIdentifier": "de.seran.haventdoneityet",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "CFBundleDisplayName": "Not Yet!",
+        "CFBundleAllowMixedLocalizations": true,
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyTrackingDomains": [],
+        "NSPrivacyCollectedDataTypes": [],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": ["CA92.1"]
+          }
+        ]
+      }
     },
     "android": {
-      "package": "de.seran.dontfallfortraps",
+      "package": "de.seran.haventdoneityet",
       "adaptiveIcon": {
         "backgroundColor": "#121013",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "android.permission.USE_EXACT_ALARM"
+      ]
     },
     "web": {
       "output": "static",
       "favicon": "./assets/favicon.png",
-      "name": "Don't Fall for Traps",
-      "shortName": "DFFT",
+      "name": "Haven't Done It Yet!",
+      "shortName": "Not Yet!",
       "themeColor": "#F7F5F1",
       "backgroundColor": "#F7F5F1"
     },
     "plugins": [
       "expo-router",
       "expo-status-bar",
-      "expo-localization",
+      [
+        "expo-localization",
+        {
+          "supportedLocales": {
+            "ios": ["de", "en"],
+            "android": ["de", "en"]
+          }
+        }
+      ],
       "expo-font",
       [
         "expo-splash-screen",
         {
           "image": "./assets/splash-icon.png",
-          "imageWidth": 220,
+          "imageWidth": 240,
           "resizeMode": "contain",
           "backgroundColor": "#121013"
         }
       ],
       "expo-sqlite",
-      "expo-sharing"
+      "expo-sharing",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#F5C21B"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
-      "baseUrl": "/dont-fall-for-traps"
+      "baseUrl": "/havent-done-it-yet"
     }
   }
 }

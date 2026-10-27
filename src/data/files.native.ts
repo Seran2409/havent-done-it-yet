@@ -4,7 +4,7 @@ import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 
 export function exportFileName(today: string) {
-  return `dont-fall-for-traps-${today}.json`;
+  return `havent-done-it-yet-${today}.json`;
 }
 
 export async function saveJson(name: string, json: string): Promise<void> {

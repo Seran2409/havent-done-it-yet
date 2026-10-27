@@ -31,13 +31,13 @@ export function levelThreshold(level: number): number {
 export const TITLES: [number, string][] = [
   [1, 'rookie'],
   [2, 'tracker'],
-  [3, 'trapSpotter'],
+  [3, 'goGetter'],
   [4, 'sureFooted'],
   [5, 'pathfinder'],
-  [7, 'trapWhisperer'],
+  [7, 'summitSeeker'],
   [9, 'trailblazer'],
-  [12, 'trapBreaker'],
-  [15, 'uncatchable'],
+  [12, 'pioneer'],
+  [15, 'unshakable'],
   [20, 'legend'],
 ];
 
