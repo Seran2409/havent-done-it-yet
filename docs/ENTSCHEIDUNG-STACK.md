@@ -1,5 +1,7 @@
 # Entscheidungsnotiz: Technik (Phase 0, freigegeben am 26.10.2026)
 
+> Die App hieß zuerst „Don't Fall for Traps“, seit 27.10.2026 „Haven't Done It Yet!“.
+
 ## Entscheidung
 
 **Expo (React Native) + TypeScript + Expo Router**, im Web über react-native-web. Eine Codebasis für Web, Android und iOS.
@@ -42,3 +44,5 @@ Vite-Web-App + Capacitor: HTML/CSS des Prototyps fast 1:1 übernehmbar, Phase 1 
 - Expo SDK 58: Eine eigene `src/app/+html.tsx` muss `useServerDocumentContext()` verwenden und `headNodes`/`bodyNodes` selbst einsetzen, sonst fehlen im statischen Export Skripte und Styles.
 - react-native-web 0.21 wertet `accessibilityState`/`accessibilityValue` nicht mehr aus; deshalb nutzt der Code `aria-checked`, `aria-selected`, `aria-expanded`, `aria-valuenow` (funktioniert auch nativ).
 - Der statische Export wird ohne Kenntnis des Geräte-Themes vorgerendert. Bis die App im Browser läuft, zeigt sie deshalb eine neutrale Hülle; sonst bliebe der Hintergrund im Dunkelmodus hell.
+- `react-native-worklets` muss als eigene Abhängigkeit installiert sein (Peer-Dependency von Reanimated 4), sonst stürzt die App in nativen Builds ab. `npx expo-doctor` findet das.
+- Erinnerungen sind einmalige lokale Benachrichtigungen ohne exakten Wecker; so braucht Android keine Sonderberechtigung (`SCHEDULE_EXACT_ALARM` ist bewusst blockiert).
