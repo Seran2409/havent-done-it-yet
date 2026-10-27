@@ -2,6 +2,8 @@
 
 export type Scope = 'ewig' | 'tag' | 'woche' | 'monat' | 'jahr';
 export type RoutineScope = 'tag' | 'woche' | 'monat' | 'jahr';
+/** Time of day a routine belongs to. Missing = any time. */
+export type RoutineSlot = 'morning' | 'midday' | 'evening';
 export type PeriodScope = RoutineScope;
 export type Diff = 1 | 2 | 3;
 /** Calendar day in the user's time zone, "YYYY-MM-DD". */
@@ -38,6 +40,7 @@ export interface Routine {
   scope: RoutineScope;
   /** Times per period, >= 1. */
   target: number;
+  slot?: RoutineSlot;
   archived?: boolean;
   createdAt: string;
   order: number;

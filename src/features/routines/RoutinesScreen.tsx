@@ -11,7 +11,7 @@ import { Chip, Empty, ProgressBar, Segmented, TintCard } from '../../ui/primitiv
 import { T } from '../../ui/Text';
 import { useUi } from '../../ui/uiState';
 import { Screen } from '../shell/Shell';
-import { GoalCard, RoutineCard } from './RoutineCard';
+import { GoalCard, RoutineGroups } from './RoutineCard';
 import { RoutineForm, SUGGESTIONS } from './RoutineForm';
 
 export default function RoutinesScreen() {
@@ -63,9 +63,7 @@ export default function RoutinesScreen() {
               </View>
             </View>
           </TintCard>
-          {list.map((r) => (
-            <RoutineCard key={r.id} routine={r} />
-          ))}
+          <RoutineGroups list={list} />
         </View>
       ) : (
         <Empty title={t(`routines.empty.${scope}`)} text={t('routines.emptyText')}>

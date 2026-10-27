@@ -2,15 +2,15 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, View } from 'react-native';
 import { useStore } from '../../data/AppStore';
-import { daysLeft } from '../../game/dates';
+import { daysLeft, hourNow } from '../../game/dates';
 import { GOAL_BONUS, MAX_GOAL, ROUT_BONUS, ROUT_XP } from '../../game/rules';
-import { isToggleOnly, periodCount, routineReview, targetOf, todayCount } from '../../game/routines';
+import { groupBySlot, isToggleOnly, periodCount, routineReview, slotAt, targetOf, todayCount, type SlotGroupKey } from '../../game/routines';
 import type { Routine } from '../../game/types';
 import { shortPeriod } from '../../i18n/format';
 import { useTheme } from '../../theme/ThemeProvider';
 import { fonts, radius } from '../../theme/tokens';
 import { Ring } from '../../ui/graphics';
-import { Icon } from '../../ui/Icon';
+import { Icon, type IconName } from '../../ui/Icon';
 import { useSheet } from '../../ui/overlays';
 import { Card, Chip, IconButton, LinkButton, SegBar, Stepper } from '../../ui/primitives';
 import { T } from '../../ui/Text';
@@ -201,5 +201,57 @@ export function GoalCard({ editable }: { editable?: boolean }) {
         </View>
       </View>
     </Card>
+  );
+}
+
+const SLOT_ICON: Record<SlotGroupKey, IconName> = { morning: 'sunrise', midday: 'sun', evening: 'moon', any: 'clock' };
+
+/** Routines grouped by time of day; a flat list when no routine has a time of day. */
+export function RoutineGroups({ list, mini }: { list: Routine[]; mini?: boolean }) {
+  const { t } = useTranslation();
+  const { c } = useTheme();
+  const { stats, today } = useStore();
+  const groups = groupBySlot(list);
+  const now = slotAt(hourNow());
+  if (groups.length === 1 && groups[0].key === 'any') {
+    return (
+      <View style={{ gap: 10 }}>
+        {groups[0].items.map((r) => (
+          <RoutineCard key={r.id} routine={r} mini={mini} />
+        ))}
+      </View>
+    );
+  }
+  return (
+    <View style={{ gap: 14 }}>
+      {groups.map((g) => {
+        const met = g.items.filter((r) => periodCount(stats, r, today) >= targetOf(r)).length;
+        const isNow = g.key === now;
+        return (
+          <View key={g.key} style={{ gap: 8 }}>
+            <View accessibilityRole="header" style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 2 }}>
+              <Icon name={SLOT_ICON[g.key]} size={18} color={isNow ? c.plumText : c.muted} />
+              <T v="smallBold" color={isNow ? c.ink : c.muted}>
+                {t(`routines.slot.${g.key}`)}
+              </T>
+              {isNow ? (
+                <View style={{ backgroundColor: c.tabActive, borderRadius: 99, paddingHorizontal: 8, paddingVertical: 1 }}>
+                  <T v="tiny" color={c.plumText} style={{ fontFamily: fonts.bodyBold, fontSize: 12 }}>
+                    {t('routines.slot.now')}
+                  </T>
+                </View>
+              ) : null}
+              <View style={{ flex: 1 }} />
+              <T v="mono" muted style={{ fontSize: 12 }}>
+                {met}/{g.items.length}
+              </T>
+            </View>
+            {g.items.map((r) => (
+              <RoutineCard key={r.id} routine={r} mini={mini} />
+            ))}
+          </View>
+        );
+      })}
+    </View>
   );
 }

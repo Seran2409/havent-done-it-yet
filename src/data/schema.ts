@@ -89,6 +89,7 @@ function normRoutine(id: string, raw: unknown): Routine | null {
     createdAt: str(raw.createdAt, new Date(0).toISOString()),
     order: Number(raw.order) || 0,
   };
+  if (raw.slot === 'morning' || raw.slot === 'midday' || raw.slot === 'evening') r.slot = raw.slot;
   if (raw.archived === true) r.archived = true;
   return r;
 }

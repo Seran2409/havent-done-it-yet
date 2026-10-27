@@ -22,7 +22,7 @@ import { Button, Card, Checkbox, LinkButton, SectionHead, TintCard } from '../..
 import { Rich, T, safe } from '../../ui/Text';
 import { useUi } from '../../ui/uiState';
 import { PlayerCard } from '../level/LevelScreen';
-import { GoalCard, RoutineCard } from '../routines/RoutineCard';
+import { GoalCard, RoutineGroups } from '../routines/RoutineCard';
 import { Screen } from '../shell/Shell';
 import { TodoForm } from '../todos/sheets';
 
@@ -212,9 +212,7 @@ function TodaySection() {
       </Card>
       <Hints />
       <GoalCard />
-      {daily.map((r) => (
-        <RoutineCard key={r.id} routine={r} mini />
-      ))}
+      <RoutineGroups list={daily} mini />
     </View>
   );
 }

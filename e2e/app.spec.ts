@@ -37,6 +37,14 @@ test('to-do with subtasks, routine, tabs, language switch and reload', async ({ 
   await page.getByRole('button', { name: 'Wasser trinken (Glas) geschafft, plus 10 XP' }).click();
   await expect(page.getByText('+10 XP', { exact: true })).toBeVisible();
 
+  // A morning routine splits the list into time-of-day groups.
+  await page.getByRole('button', { name: 'Neue Routine' }).click();
+  await page.getByRole('textbox', { name: 'Was willst du regelmäßig tun?' }).fill('Meditieren');
+  await page.getByRole('radio', { name: 'Morgens' }).click();
+  await page.getByRole('button', { name: 'Anlegen' }).click();
+  await expect(page.getByRole('heading', { name: /Morgens/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Jederzeit/ })).toBeVisible();
+
   // Level: 10 (to-do) + 2×5 (subtasks) + 10 (routine) = 30 XP.
   await page.getByRole('tab', { name: 'Level' }).click();
   await expect(page.getByText('Level 1 · 30 XP gesamt')).toBeVisible();

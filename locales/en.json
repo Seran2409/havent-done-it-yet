@@ -278,6 +278,13 @@
       "read": "Read",
       "tidy": "Tidy the flat",
       "dentist": "Dentist check-up"
+    },
+    "slot": {
+      "any": "Any time",
+      "morning": "Morning",
+      "midday": "Midday",
+      "evening": "Evening",
+      "now": "now"
     }
   },
   "routineForm": {
@@ -296,7 +303,8 @@
       "monat": "for the month",
       "jahr": "for the year"
     },
-    "errTitle": "Give the routine a name."
+    "errTitle": "Give the routine a name.",
+    "slot": "Time of day"
   },
   "level": {
     "total": "Level {{level}} · {{xp}} XP total",

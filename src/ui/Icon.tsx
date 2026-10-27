@@ -33,6 +33,10 @@ const ICONS: Record<string, ReactElement[]> = {
   move: [P('M5 12h14M13 6l6 6-6 6')],
   chev: [P('M9 6l6 6-6 6')],
   download: [P('M12 4v11M7 10l5 5 5-5'), P('M5 20h14')],
+  sunrise: [P('M12 3v4'), P('M5.6 9.6l1.4 1.4M18.4 9.6l-1.4 1.4'), P('M3 18h18'), P('M7 18a5 5 0 0 1 10 0'), P('M8 21h8')],
+  sun: [<Circle cx={12} cy={12} r={4} />, P('M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4')],
+  moon: [P('M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z')],
+  clock: [<Circle cx={12} cy={12} r={9} />, P('M12 7v5l3 2')],
   upload: [P('M12 20V9M7 14l5-5 5 5'), P('M5 4h14')],
 };
 

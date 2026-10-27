@@ -30,7 +30,7 @@ const SAMPLE = {
       ['t4', 'Fahrrad reparieren', 'woche', 2, ['Schlauch kaufen', 'Reifen wechseln', 'Bremsen prüfen']],
       ['t5', 'Wäsche aufhängen', 'done', 1],
     ],
-    routines: [['r1', 'Wasser trinken (Glas)', '💧', 'tag', 8], ['r2', 'Lesen', '📚', 'tag', 1], ['r3', 'Laufen gehen', '🏃', 'woche', 3]],
+    routines: [['r4', 'Dehnen', '🧘', 'tag', 1, 'morning'], ['r1', 'Wasser trinken (Glas)', '💧', 'tag', 8], ['r2', 'Lesen', '📚', 'tag', 1, 'evening'], ['r3', 'Laufen gehen', '🏃', 'woche', 3]],
   },
   en: {
     name: 'Alex',
@@ -41,7 +41,7 @@ const SAMPLE = {
       ['t4', 'Fix the bike', 'woche', 2, ['Buy a tube', 'Change the tire', 'Check the brakes']],
       ['t5', 'Hang up the laundry', 'done', 1],
     ],
-    routines: [['r1', 'Drink water (glass)', '💧', 'tag', 8], ['r2', 'Read', '📚', 'tag', 1], ['r3', 'Go for a run', '🏃', 'woche', 3]],
+    routines: [['r4', 'Stretch', '🧘', 'tag', 1, 'morning'], ['r1', 'Drink water (glass)', '💧', 'tag', 8], ['r2', 'Read', '📚', 'tag', 1, 'evening'], ['r3', 'Go for a run', '🏃', 'woche', 3]],
   },
 };
 
@@ -87,7 +87,7 @@ function docs(lang) {
       subs: subs.map((t, j) => ({ id: `${id}s${j}`, title: t, done: j === 0, doneOn: j === 0 ? TODAY : null })),
     });
   });
-  s.routines.forEach(([id, title, emoji, scope, target], i) => put('routines', id, { title, emoji, scope, target, createdAt: '2026-08-01', order: i }));
+  s.routines.forEach(([id, title, emoji, scope, target, slot], i) => put('routines', id, { title, emoji, scope, target, ...(slot ? { slot } : {}), createdAt: '2026-08-01', order: i }));
   // History: finished (archived) to-dos over the past weeks, so the stats look lived-in.
   for (let i = 1; i <= 46; i++) {
     const d = day(-((i * 2) % 90) - 1);
@@ -95,7 +95,7 @@ function docs(lang) {
   }
   for (let i = -100; i <= 0; i++) {
     if (i < -14 && (i * 7) % 5 === 0) continue;
-    const r = { r1: i === 0 ? 3 : 3 + ((((i * 13) % 6) + 6) % 6), r2: i === 0 ? 1 : i % 3 ? 1 : 0 };
+    const r = { r4: 1, r1: i === 0 ? 3 : 3 + ((((i * 13) % 6) + 6) % 6), r2: i === 0 ? 0 : i % 3 ? 1 : 0 };
     if (i % 2 === 0) r.r3 = 1;
     put('days', day(i), { date: day(i), routines: Object.fromEntries(Object.entries(r).filter(([, n]) => n > 0)) });
   }

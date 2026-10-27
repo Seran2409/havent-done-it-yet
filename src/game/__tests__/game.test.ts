@@ -19,7 +19,10 @@ import {
   todayKey,
   todoXp,
   toggleSub,
+  groupBySlot,
+  slotAt,
 } from '../index';
+import { normalizeImport } from '../../data/schema';
 import { emptyData, randomHistory, routine, todo } from './fixtures';
 import { prototypeCompute } from './prototype-reference.js';
 
@@ -216,5 +219,30 @@ describe('matches the prototype', () => {
       expect([...st.unlocked].sort()).toEqual([...ref.unlocked].sort());
       expect(Object.fromEntries(st.xpByDay)).toEqual(Object.fromEntries(ref.xpByDay));
     }
+  });
+});
+
+describe('time of day', () => {
+  it('maps hours to morning, midday and evening', () => {
+    expect([4, 10, 11, 16, 17, 23, 2].map(slotAt)).toEqual(['morning', 'morning', 'midday', 'midday', 'evening', 'evening', 'evening']);
+  });
+
+  it('groups routines by time of day, flat when none has one', () => {
+    const a = routine({ id: 'a' });
+    const b = routine({ id: 'b', slot: 'evening' });
+    const m = routine({ id: 'm', slot: 'morning' });
+    expect(groupBySlot([a])).toEqual([{ key: 'any', items: [a] }]);
+    expect(groupBySlot([a, b, m]).map((g) => [g.key, g.items.map((r) => r.id)])).toEqual([
+      ['morning', ['m']],
+      ['evening', ['b']],
+      ['any', ['a']],
+    ]);
+    expect(groupBySlot([])).toEqual([]);
+  });
+
+  it('keeps a valid time of day on import and drops unknown ones', () => {
+    const data = normalizeImport({ routines: { a: { title: 'A', scope: 'tag', target: 1, slot: 'evening' }, b: { title: 'B', slot: 'night' } } });
+    expect(data.routines.a.slot).toBe('evening');
+    expect(data.routines.b.slot).toBeUndefined();
   });
 });

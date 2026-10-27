@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
 import { useStore, type RoutineDraft } from '../../data/AppStore';
 import { ROUT_BONUS, ROUT_XP, ROUTINE_SCOPES } from '../../game/rules';
+import { ROUTINE_SLOTS, type SlotGroupKey } from '../../game/routines';
 import type { RoutineScope } from '../../game/types';
 import { useTheme } from '../../theme/ThemeProvider';
 import { SheetHead, useSheet, useToast } from '../../ui/overlays';
@@ -19,7 +20,7 @@ export const SUGGESTIONS: (Omit<RoutineDraft, 'title'> & { key: string })[] = [
   { key: 'run', emoji: '🏃', scope: 'woche', target: 3 },
   { key: 'toenails', emoji: '🦶', scope: 'monat', target: 1 },
   { key: 'water', emoji: '💧', scope: 'tag', target: 8 },
-  { key: 'read', emoji: '📚', scope: 'tag', target: 1 },
+  { key: 'read', emoji: '📚', scope: 'tag', target: 1, slot: 'evening' },
   { key: 'tidy', emoji: '🧹', scope: 'woche', target: 1 },
   { key: 'dentist', emoji: '🦷', scope: 'jahr', target: 2 },
 ];
@@ -35,6 +36,7 @@ export function RoutineForm({ id, preset, close }: { id: string | null; preset?:
   const [title, setTitle] = useState(prev?.title ?? preset?.title ?? '');
   const [emoji, setEmoji] = useState(prev?.emoji ?? preset?.emoji ?? '🏃');
   const [scope, setScope] = useState<RoutineScope>(prev?.scope ?? preset?.scope ?? ui.routScope);
+  const [slot, setSlot] = useState<SlotGroupKey>(prev?.slot ?? preset?.slot ?? 'any');
   const [target, setTarget] = useState(prev ? Math.max(1, prev.target) : (preset?.target ?? (ui.routScope === 'woche' ? 3 : 1)));
   const [err, setErr] = useState(false);
   const [gridW, setGridW] = useState(0);
@@ -47,7 +49,7 @@ export function RoutineForm({ id, preset, close }: { id: string | null; preset?:
       setErr(true);
       return;
     }
-    actions.saveRoutine(id, { title: name.slice(0, 80), emoji, scope, target });
+    actions.saveRoutine(id, { title: name.slice(0, 80), emoji, scope, target, slot: slot === 'any' ? undefined : slot });
     if (id) toast(t('toast.saved'));
     else {
       toast(t('toast.routineCreated'));
@@ -110,6 +112,14 @@ export function RoutineForm({ id, preset, close }: { id: string | null; preset?:
         </Field>
         <Field label={t('routineForm.rhythm')}>
           <Segmented label={t('routineForm.rhythm')} value={scope} onChange={setScope} options={ROUTINE_SCOPES.map((k) => ({ key: k, label: t(`routines.scope.${k}`) }))} />
+        </Field>
+        <Field label={t('routineForm.slot')}>
+          <Segmented<SlotGroupKey>
+            label={t('routineForm.slot')}
+            value={slot}
+            onChange={setSlot}
+            options={(['any', ...ROUTINE_SLOTS] as SlotGroupKey[]).map((k) => ({ key: k, label: t(`routines.slot.${k}`) }))}
+          />
         </Field>
         <Field label={t('routineForm.target')}>
           <Card pad={12}>

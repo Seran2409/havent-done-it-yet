@@ -278,6 +278,13 @@
       "read": "Lesen",
       "tidy": "Wohnung aufräumen",
       "dentist": "Zahnarzt-Kontrolle"
+    },
+    "slot": {
+      "any": "Jederzeit",
+      "morning": "Morgens",
+      "midday": "Mittags",
+      "evening": "Abends",
+      "now": "jetzt"
     }
   },
   "routineForm": {
@@ -296,7 +303,8 @@
       "monat": "im Monat",
       "jahr": "im Jahr"
     },
-    "errTitle": "Gib der Routine einen Namen."
+    "errTitle": "Gib der Routine einen Namen.",
+    "slot": "Tageszeit"
   },
   "level": {
     "total": "Level {{level}} · {{xp}} XP gesamt",

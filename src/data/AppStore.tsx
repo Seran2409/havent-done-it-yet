@@ -12,7 +12,7 @@ import { localStore } from './storage';
 import { SETTINGS_ID, type Collection } from './storage.types';
 
 export type TodoDraft = Omit<Todo, 'id' | 'createdAt' | 'order' | 'done' | 'doneOn'> & Partial<Pick<Todo, 'done' | 'doneOn'>>;
-export type RoutineDraft = Pick<Routine, 'title' | 'emoji' | 'scope' | 'target'>;
+export type RoutineDraft = Pick<Routine, 'title' | 'emoji' | 'scope' | 'target' | 'slot'>;
 
 interface Store {
   ready: boolean;
