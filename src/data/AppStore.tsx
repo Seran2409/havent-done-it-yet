@@ -257,7 +257,6 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
         setData(next);
       },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [commit],
   );
 
