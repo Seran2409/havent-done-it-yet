@@ -2,7 +2,7 @@ import { BlurView } from 'expo-blur';
 import { useEffect, useId, useState, type ReactNode } from 'react';
 import { Platform, StyleSheet, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useReducedMotion, useSharedValue, withTiming } from 'react-native-reanimated';
-import Svg, { Circle, ClipPath, Defs, Ellipse, G, Pattern, Polygon, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Circle, ClipPath, Defs, Ellipse, G, Path, Pattern, Polygon, RadialGradient, Rect, Stop } from 'react-native-svg';
 import { useTheme } from '../theme/ThemeProvider';
 import { fonts } from '../theme/tokens';
 import { T } from './Text';
@@ -46,6 +46,35 @@ export function HazardStripes({ width, height, a, b, band = 9, gap }: { width: n
         </Pattern>
       </Defs>
       <Rect x={0} y={0} width="100%" height={height} fill={`url(#${id})`} />
+    </Svg>
+  );
+}
+
+/** Empty-state picture: a checklist with one tick, crossed by warning tape. `ground` matches the card behind it. */
+export function EmptyArt({ ground, width = 140 }: { ground?: string; width?: number }) {
+  const { c } = useTheme();
+  const id = 'et' + useId().replace(/:/g, '');
+  const rows = [22, 37];
+  return (
+    <Svg width={width} height={(width * 90) / 140} viewBox="0 0 140 90" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+      <Defs>
+        <Pattern id={id} patternUnits="userSpaceOnUse" width={12} height={12} patternTransform="rotate(45)">
+          <Rect x={0} y={0} width={6} height={12} fill="#F5C21B" />
+          <Rect x={6} y={0} width={6} height={12} fill="#1C1A0F" />
+        </Pattern>
+      </Defs>
+      <Rect x={38} y={6} width={64} height={78} rx={10} fill={ground ?? c.surface} stroke={c.ink} strokeWidth={2.5} />
+      {rows.map((y, i) => (
+        <G key={y}>
+          <Rect x={48} y={y - 5} width={11} height={11} rx={3} fill={i === 0 ? c.hazard : 'none'} stroke={c.ink} strokeWidth={2} />
+          {i === 0 ? <Path d={`M50.5 ${y + 0.5} l2.6 2.6 l4.6 -5`} fill="none" stroke={c.hazardInk} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" /> : null}
+          <Rect x={64} y={y - 2} width={i === 0 ? 28 : 22} height={4.5} rx={2.25} fill={c.lineStrong} />
+        </G>
+      ))}
+      <G transform="rotate(-11 70 62)">
+        <Rect x={10} y={55} width={120} height={15} fill={`url(#${id})`} />
+        <Rect x={10} y={55} width={120} height={15} fill="none" stroke="#1C1A0F" strokeWidth={1.5} />
+      </G>
     </Svg>
   );
 }
@@ -234,7 +263,7 @@ export function Backdrop() {
 /* ---------- glass ---------- */
 
 /** Translucent surface with blur behind it. Android gets the opaque fallback (blur there is experimental). */
-export function Glass({ tone, style, children }: { tone: 'bar' | 'top'; style?: StyleProp<ViewStyle>; children: ReactNode }) {
+export function Glass({ tone, style, children }: { tone: 'bar' | 'top'; style?: StyleProp<ViewStyle>; children?: ReactNode }) {
   const { c, dark } = useTheme();
   const canBlur = Platform.OS !== 'android';
   const bg = canBlur ? (tone === 'bar' ? c.glass : c.glassTop) : c.glassSolid;
