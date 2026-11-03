@@ -87,7 +87,7 @@ function docs(lang) {
       subs: subs.map((t, j) => ({ id: `${id}s${j}`, title: t, done: j === 0, doneOn: j === 0 ? TODAY : null })),
     });
   });
-  s.routines.forEach(([id, title, emoji, scope, target, slot], i) => put('routines', id, { title, emoji, scope, target, ...(slot ? { slot } : {}), createdAt: '2026-08-01', order: i }));
+  s.routines.forEach(([id, title, emoji, scope, target, slot], i) => put('routines', id, { title, emoji, scope, target, ...(slot ? { slots: [slot] } : {}), createdAt: '2026-08-01', order: i }));
   // History: finished (archived) to-dos over the past weeks, so the stats look lived-in.
   for (let i = 1; i <= 46; i++) {
     const d = day(-((i * 2) % 90) - 1);
